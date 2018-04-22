@@ -7,6 +7,7 @@ import com.fincatto.documentofiscal.DFBase;
 import com.fincatto.documentofiscal.nfe400.classes.NFEndereco;
 import com.fincatto.documentofiscal.nfe400.classes.NFRegimeTributario;
 import com.fincatto.documentofiscal.validadores.StringValidador;
+import org.simpleframework.xml.Element;
 
 public class NFNotaInfoEmitente extends DFBase {
     private static final long serialVersionUID = -2236869565066526162L;

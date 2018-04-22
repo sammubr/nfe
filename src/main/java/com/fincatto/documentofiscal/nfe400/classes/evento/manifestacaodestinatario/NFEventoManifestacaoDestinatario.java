@@ -1,7 +1,7 @@
 package com.fincatto.documentofiscal.nfe400.classes.evento.manifestacaodestinatario;
 
-import java.math.BigDecimal;
-
+import com.fincatto.documentofiscal.DFBase;
+import com.fincatto.documentofiscal.validadores.BigDecimalParser;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 

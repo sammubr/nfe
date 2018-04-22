@@ -1,5 +1,6 @@
 package com.fincatto.documentofiscal.nfe400.classes.cadastro;
 
+import com.fincatto.documentofiscal.DFBase;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
