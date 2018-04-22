@@ -1,8 +1,8 @@
-package com.fincatto.documentofiscal.nfe310.danfe;
+package com.fincatto.documentofiscal.nfe400.danfe;
 
 import com.fincatto.documentofiscal.DFAmbiente;
 import com.fincatto.documentofiscal.DFModelo;
-import com.fincatto.documentofiscal.nfe310.classes.nota.NFNotaProcessada;
+import com.fincatto.documentofiscal.nfe400.classes.nota.NFNotaProcessada;
 import com.fincatto.documentofiscal.parsers.DFParser;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -35,7 +35,7 @@ public class Danfe {
     private NFNotaProcessada notaProcessada;
 
     public Danfe(String xml) {
-        this(new DFParser().nota310ProcessadaParaObjeto(xml));
+        this(new DFParser().nota400ProcessadaParaObjeto(xml));
     }
 
     public Danfe(NFNotaProcessada notaProcessada) {

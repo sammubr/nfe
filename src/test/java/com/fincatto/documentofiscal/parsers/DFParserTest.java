@@ -25,7 +25,7 @@ public class DFParserTest {
     @Test
     public void deveParsearCorretamenteUmXMLDaNotaProcessada310() {
         final String xmlNota = FabricaDeObjetosFake.getNFNotaProcessada().toString();
-        Assert.assertNotNull(new DFParser().notaProcessadaParaObjeto(xmlNota));
+        Assert.assertNotNull(new DFParser().nota310ProcessadaParaObjeto(xmlNota));
     }
 
     @Test
@@ -44,8 +44,8 @@ public class DFParserTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void deveLancarExcecaoCasoRecebaUmaStringInvalidaParaNotaProcessada() {
-        new DFParser().notaProcessadaParaObjeto("");
+    public void deveLancarExcecaoCasoRecebaUmaStringInvalidaParaNotaProcessada310() {
+        new DFParser().nota310ProcessadaParaObjeto("");
     }
 
     @Test(expected = IllegalArgumentException.class)

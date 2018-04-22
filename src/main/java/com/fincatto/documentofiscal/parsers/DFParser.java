@@ -58,9 +58,17 @@ public class DFParser {
         }
     }
 
-    public NFNotaProcessada notaProcessadaParaObjeto(final String xml) {
+    public com.fincatto.documentofiscal.nfe310.classes.nota.NFNotaProcessada nota310ProcessadaParaObjeto(final String xml) {
         try {
-            return this.persister.read(NFNotaProcessada.class, xml);
+            return this.persister.read(com.fincatto.documentofiscal.nfe310.classes.nota.NFNotaProcessada.class, xml);
+        } catch (final Exception e) {
+            throw new IllegalArgumentException(String.format("Nao foi possivel parsear o xml: %s", e.getMessage()));
+        }
+    }
+
+    public com.fincatto.documentofiscal.nfe400.classes.nota.NFNotaProcessada nota400ProcessadaParaObjeto(final String xml) {
+        try {
+            return this.persister.read(com.fincatto.documentofiscal.nfe400.classes.nota.NFNotaProcessada.class, xml);
         } catch (final Exception e) {
             throw new IllegalArgumentException(String.format("Nao foi possivel parsear o xml: %s", e.getMessage()));
         }
