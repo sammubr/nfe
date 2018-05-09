@@ -37,10 +37,10 @@
 	<field name="nota.info.informacoesAdicionais.informacoesAdicionaisInteresseFisco" class="java.lang.String"/>
 	<field name="nota.info.identificacao.numeroNota" class="java.lang.String"/>
 	<field name="nota.info.identificacao.serie" class="java.lang.String"/>
-	<field name="nota.info.identificacao.dataHoraEmissao" class="org.joda.time.DateTime"/>
+	<field name="nota.info.identificacao.dataHoraEmissao" class="java.time.ZonedDateTime"/>
 	<field name="nota.info.identificacao.ambiente.codigo" class="java.lang.String"/>
 	<field name="nota.info.chaveAcesso" class="java.lang.String"/>
-	<field name="protocolo.protocoloInfo.dataRecebimento" class="org.joda.time.LocalDateTime"/>
+	<field name="protocolo.protocoloInfo.dataRecebimento" class="java.time.LocalDateTime"/>
 	<field name="protocolo.protocoloInfo.numeroProtocolo" class="java.lang.String"/>
 	<field name="nota.info.destinatario.cnpj" class="java.lang.String"/>
 	<field name="nota.info.destinatario.cpf" class="java.lang.String"/>
@@ -236,7 +236,7 @@ $V{ACRESCIMOS}.signum() < 0 ? "DESCONTOS R$" : "ACRÉSCIMOS R$"]]></textFieldExp
 				<textElement textAlignment="Left">
 					<font fontName="SansSerif" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota.info.identificacao.dataHoraEmissao}.toString("dd/MM/yyyy HH:mm:ss")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").format($F{nota.info.identificacao.dataHoraEmissao})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="88" width="122" height="8" backcolor="#00FFFF" uuid="bc2c3cf5-fe52-4680-bf2a-4031bb3fd34a"/>
@@ -251,7 +251,7 @@ $V{ACRESCIMOS}.signum() < 0 ? "DESCONTOS R$" : "ACRÉSCIMOS R$"]]></textFieldExp
 					<font fontName="SansSerif" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Protocolo de Autorização: "+$F{protocolo.protocoloInfo.numeroProtocolo}+" "+
-$F{protocolo.protocoloInfo.dataRecebimento}.toString("dd/MM/yyyy HH:mm:ss")]]></textFieldExpression>
+java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").format($F{protocolo.protocoloInfo.dataRecebimento})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="112" width="122" height="8" backcolor="#666666" uuid="bd9bef1f-4b7f-4391-8bee-114f54704024"/>
