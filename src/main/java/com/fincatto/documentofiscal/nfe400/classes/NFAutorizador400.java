@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.List;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * <h1>URLs dos serviços</h1><br>
  * <a href="http://hom.nfe.fazenda.gov.br/portal/webServices.aspx?tipoConteudo=Wak0FwB7dKs=">NFE
