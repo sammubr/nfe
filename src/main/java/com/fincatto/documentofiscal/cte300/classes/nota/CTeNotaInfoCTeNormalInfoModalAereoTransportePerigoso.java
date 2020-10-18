@@ -16,14 +16,14 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoModalAereoTransportePerigoso extends DFBase {
     private static final long serialVersionUID = 5312668737106687231L;
-
-    @Element(name = "nONU", required = true)
+    
+    @Element(name = "nONU")
     private String onu;
-
-    @Element(name = "qTotEmb", required = true)
+    
+    @Element(name = "qTotEmb")
     private String quantidadeTotal;
-
-    @Element(name = "infTotAP", required = true)
+    
+    @Element(name = "infTotAP")
     private CTeNotaInfoCTeNormalInfoModalAereoTransportePerigosoInfo info;
 
     public CTeNotaInfoCTeNormalInfoModalAereoTransportePerigoso() {

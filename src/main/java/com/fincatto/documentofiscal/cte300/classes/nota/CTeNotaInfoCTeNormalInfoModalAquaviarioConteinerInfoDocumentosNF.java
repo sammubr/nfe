@@ -1,7 +1,7 @@
 package com.fincatto.documentofiscal.cte300.classes.nota;
 
 import com.fincatto.documentofiscal.DFBase;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
@@ -18,11 +18,11 @@ import java.math.BigDecimal;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoModalAquaviarioConteinerInfoDocumentosNF extends DFBase {
     private static final long serialVersionUID = 2044424620532788296L;
-
-    @Element(name = "serie", required = true)
+    
+    @Element(name = "serie")
     private String serie;
-
-    @Element(name = "nDoc", required = true)
+    
+    @Element(name = "nDoc")
     private String numero;
 
     @Element(name = "unidRat", required = false)
@@ -66,6 +66,6 @@ public class CTeNotaInfoCTeNormalInfoModalAquaviarioConteinerInfoDocumentosNF ex
      * Unidade de medida rateada (Peso,Volume)
      */
     public void setUnidadeRateada(final BigDecimal unidadeRateada) {
-        this.unidadeRateada = BigDecimalParser.tamanho5Com2CasasDecimais(unidadeRateada, "Unidade de medida rateada (Peso,Volume)");
+        this.unidadeRateada = BigDecimalValidador.tamanho5Com2CasasDecimais(unidadeRateada, "Unidade de medida rateada (Peso,Volume)");
     }
 }

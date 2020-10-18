@@ -12,8 +12,8 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/nfe")
 public class Any extends DFBase {
     private static final long serialVersionUID = 4770990764329708815L;
-
-    @Attribute(name = "versao", required = true)
+    
+    @Attribute(name = "versao")
     private String versao;
 
     @Element(name = "NFe", required = false)

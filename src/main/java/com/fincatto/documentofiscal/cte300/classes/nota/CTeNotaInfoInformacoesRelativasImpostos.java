@@ -1,7 +1,7 @@
 package com.fincatto.documentofiscal.cte300.classes.nota;
 
 import com.fincatto.documentofiscal.DFBase;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
@@ -18,8 +18,8 @@ import java.math.BigDecimal;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoInformacoesRelativasImpostos extends DFBase {
     private static final long serialVersionUID = -1424546812171486009L;
-
-    @Element(name = "ICMS", required = true)
+    
+    @Element(name = "ICMS")
     private CTeNotaInfoInformacoesRelativasImpostosICMS icms;
 
     @Element(name = "vTotTrib", required = false)
@@ -57,7 +57,7 @@ public class CTeNotaInfoInformacoesRelativasImpostos extends DFBase {
      * Valor Total dos Tributos
      */
     public void setValorTotalTributos(final BigDecimal valorTotalTributos) {
-        this.valorTotalTributos = BigDecimalParser.tamanho15Com2CasasDecimais(valorTotalTributos, "Valor Total dos Tributos");
+        this.valorTotalTributos = BigDecimalValidador.tamanho15Com2CasasDecimais(valorTotalTributos, "Valor Total dos Tributos");
     }
 
     public String getInformacoesAdicionaisFisco() {

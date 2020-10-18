@@ -15,14 +15,14 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoCTeSubstituicao extends DFBase {
     private static final long serialVersionUID = 8643576155858141154L;
-
-    @Element(name = "chCte", required = true)
+    
+    @Element(name = "chCte")
     private String chaveCTe;
-
-    @Element(name = "refCteAnu", required = true)
+    
+    @Element(name = "refCteAnu")
     private String chaveCTeAnulacao;
-
-    @Element(name = "tomaICMS", required = true)
+    
+    @Element(name = "tomaICMS")
     private CTeNotaInfoCTeNormalInfoCTeSubstituicaoTomadorICMS tomadorICMS;
 
     @Element(name = "indAlteraToma", required = false)

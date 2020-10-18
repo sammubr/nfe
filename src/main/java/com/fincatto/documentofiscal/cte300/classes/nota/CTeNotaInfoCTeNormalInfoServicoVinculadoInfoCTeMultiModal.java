@@ -15,8 +15,8 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoServicoVinculadoInfoCTeMultiModal extends DFBase {
     private static final long serialVersionUID = 4687995844687441962L;
-
-    @Element(name = "chCTeMultimodal", required = true)
+    
+    @Element(name = "chCTeMultimodal")
     private String chaveCTeMultiModal;
 
     public CTeNotaInfoCTeNormalInfoServicoVinculadoInfoCTeMultiModal() {

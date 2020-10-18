@@ -19,8 +19,8 @@ import java.util.List;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoModalRodoviario extends DFBase {
     private static final long serialVersionUID = 4068566294432201656L;
-
-    @Element(name = "RNTRC", required = true)
+    
+    @Element(name = "RNTRC")
     private String rntrc;
 
     @ElementList(name = "occ", inline = true, required = false)

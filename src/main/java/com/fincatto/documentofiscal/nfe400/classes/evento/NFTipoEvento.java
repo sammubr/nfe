@@ -1,7 +1,7 @@
 package com.fincatto.documentofiscal.nfe400.classes.evento;
 
 import com.fincatto.documentofiscal.DFBase;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -11,12 +11,13 @@ import java.math.BigDecimal;
 
 @Root(strict = false)
 public class NFTipoEvento extends DFBase {
+
     private static final long serialVersionUID = 172979194017130488L;
 
-    @Attribute(name = "versao", required = true)
+    @Attribute(name = "versao")
     private String versao;
 
-    @Element(name = "descEvento", required = true)
+    @Element(name = "descEvento")
     private String descricaoEvento;
 
     // Carta correcao
@@ -27,11 +28,11 @@ public class NFTipoEvento extends DFBase {
     private String condicaoUso;
 
     public void setVersao(final BigDecimal versao) {
-        this.versao = BigDecimalParser.tamanho5Com2CasasDecimais(versao, "Versao");
+        this.versao = BigDecimalValidador.tamanho5Com2CasasDecimais(versao, "Versao");
     }
 
     public void setDescricaoEvento(final String descricaoEvento) {
-        StringValidador.tamanho5a60(descricaoEvento, "Descricao do Evento");
+        StringValidador.tamanho4a60(descricaoEvento, "Descricao do Evento");
         this.descricaoEvento = descricaoEvento;
     }
 

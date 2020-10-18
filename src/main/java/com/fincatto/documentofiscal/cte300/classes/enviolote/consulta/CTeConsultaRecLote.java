@@ -16,14 +16,14 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeConsultaRecLote extends DFBase {
     private static final long serialVersionUID = -1071906898535302580L;
-
-    @Element(name = "tpAmb", required = true)
+    
+    @Element(name = "tpAmb")
     private DFAmbiente ambiente;
-
-    @Element(name = "nRec", required = true)
+    
+    @Element(name = "nRec")
     private String numeroRecebimento;
-
-    @Attribute(name = "versao", required = true)
+    
+    @Attribute(name = "versao")
     private String versao;
 
     public CTeConsultaRecLote() {

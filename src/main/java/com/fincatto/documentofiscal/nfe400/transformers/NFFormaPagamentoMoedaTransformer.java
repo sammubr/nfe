@@ -1,6 +1,6 @@
 package com.fincatto.documentofiscal.nfe400.transformers;
 
-import com.fincatto.documentofiscal.nfe400.classes.nota.NFFormaPagamentoMoeda;
+import com.fincatto.documentofiscal.nfe310.classes.nota.NFFormaPagamentoMoeda;
 import org.simpleframework.xml.transform.Transform;
 
 public class NFFormaPagamentoMoedaTransformer implements Transform<NFFormaPagamentoMoeda> {

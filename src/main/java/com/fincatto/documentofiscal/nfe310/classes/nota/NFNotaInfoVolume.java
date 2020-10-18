@@ -1,7 +1,7 @@
 package com.fincatto.documentofiscal.nfe310.classes.nota;
 
 import com.fincatto.documentofiscal.DFBase;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.ListValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
 import org.simpleframework.xml.Element;
@@ -55,11 +55,11 @@ public class NFNotaInfoVolume extends DFBase {
     }
 
     public void setPesoLiquido(final BigDecimal pesoLiquido) {
-        this.pesoLiquido = BigDecimalParser.tamanho15Com3CasasDecimais(pesoLiquido, "Peso Liquido Volume");
+        this.pesoLiquido = BigDecimalValidador.tamanho15Com3CasasDecimais(pesoLiquido, "Peso Liquido Volume");
     }
 
     public void setPesoBruto(final BigDecimal pesoBruto) {
-        this.pesoBruto = BigDecimalParser.tamanho15Com3CasasDecimais(pesoBruto, "Peso Bruto Volume");
+        this.pesoBruto = BigDecimalValidador.tamanho15Com3CasasDecimais(pesoBruto, "Peso Bruto Volume");
     }
 
     public void setLacres(final List<NFNotaInfoLacre> lacres) {

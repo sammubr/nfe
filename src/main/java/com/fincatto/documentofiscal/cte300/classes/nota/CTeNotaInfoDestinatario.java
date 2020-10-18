@@ -25,8 +25,8 @@ public class CTeNotaInfoDestinatario extends DFBase {
 
     @Element(name = "IE", required = false)
     private String inscricaoEstadual;
-
-    @Element(name = "xNome", required = true)
+    
+    @Element(name = "xNome")
     private String razaoSocial;
 
     @Element(name = "fone", required = false)
@@ -34,8 +34,8 @@ public class CTeNotaInfoDestinatario extends DFBase {
 
     @Element(name = "ISUF", required = false)
     private String inscricaoSuframa;
-
-    @Element(name = "enderDest", required = true)
+    
+    @Element(name = "enderDest")
     private CTeNotaEndereco endereco;
 
     @Element(name = "email", required = false)

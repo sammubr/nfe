@@ -39,8 +39,8 @@ public class CTeNotaInfoCTeNormalInfoModal extends DFBase {
 
     @Element(name = "multimodal", required = false)
     private CTeNotaInfoCTeNormalInfoModalMultiModal multiModal;
-
-    @Attribute(name = "versaoModal", required = true)
+    
+    @Attribute(name = "versaoModal")
     private String versao;
 
     public CTeNotaInfoCTeNormalInfoModal() {

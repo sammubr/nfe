@@ -2,11 +2,15 @@ package com.fincatto.documentofiscal.cte300.classes.nota;
 
 import com.fincatto.documentofiscal.DFBase;
 import com.fincatto.documentofiscal.cte300.classes.CTTipoUnidadeCarga;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -21,14 +25,14 @@ import java.util.List;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoDocumentosInfoUnidadeCarga extends DFBase {
     private static final long serialVersionUID = -3462616457147475669L;
-
-    @Element(name = "tpUnidCarga", required = true)
+    
+    @Element(name = "tpUnidCarga")
     private CTTipoUnidadeCarga unidadeCarga;
-
-    @Element(name = "idUnidCarga", required = true)
+    
+    @Element(name = "idUnidCarga")
     private String identificacaoCarga;
 
-    @Element(name = "lacUnidCarga", required = false)
+    @ElementList(name = "lacUnidCarga", inline = true, required = false)
     private List<CTeNotaInfoCTeNormalInfoDocumentosLacre> lacre;
 
     @Element(name = "qtdRat", required = false)
@@ -88,6 +92,6 @@ public class CTeNotaInfoCTeNormalInfoDocumentosInfoUnidadeCarga extends DFBase {
      * Quantidade rateada (Peso,Volume)
      */
     public void setQuantidadeRateada(final BigDecimal quantidadeRateada) {
-        this.quantidadeRateada = BigDecimalParser.tamanho5Com2CasasDecimais(quantidadeRateada, "Quantidade rateada (Peso,Volume)");
+        this.quantidadeRateada = BigDecimalValidador.tamanho5Com2CasasDecimais(quantidadeRateada, "Quantidade rateada (Peso,Volume)");
     }
 }

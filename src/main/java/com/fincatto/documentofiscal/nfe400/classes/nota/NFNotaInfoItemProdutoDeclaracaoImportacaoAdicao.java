@@ -1,7 +1,7 @@
 package com.fincatto.documentofiscal.nfe400.classes.nota;
 
 import com.fincatto.documentofiscal.DFBase;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.BigIntegerValidador;
 import com.fincatto.documentofiscal.validadores.IntegerValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
@@ -12,14 +12,14 @@ import java.math.BigInteger;
 
 public class NFNotaInfoItemProdutoDeclaracaoImportacaoAdicao extends DFBase {
     private static final long serialVersionUID = -7286071184901675008L;
-
-    @Element(name = "nAdicao", required = true)
+    
+    @Element(name = "nAdicao")
     private Integer numero;
-
-    @Element(name = "nSeqAdic", required = true)
+    
+    @Element(name = "nSeqAdic")
     private Integer sequencial;
-
-    @Element(name = "cFabricante", required = true)
+    
+    @Element(name = "cFabricante")
     private String codigoFabricante;
 
     @Element(name = "vDescDI", required = false)
@@ -44,7 +44,7 @@ public class NFNotaInfoItemProdutoDeclaracaoImportacaoAdicao extends DFBase {
     }
 
     public void setDesconto(final BigDecimal desconto) {
-        this.desconto = BigDecimalParser.tamanho15Com2CasasDecimais(desconto, "Desconto Declaracao Importacao Adicao");
+        this.desconto = BigDecimalValidador.tamanho15Com2CasasDecimais(desconto, "Desconto Declaracao Importacao Adicao");
     }
 
     public void setNumeroAtoConcessorioDrawback(final BigInteger numeroAtoConcessorioDrawback) {

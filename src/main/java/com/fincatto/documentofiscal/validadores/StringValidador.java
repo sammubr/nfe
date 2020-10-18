@@ -1,9 +1,15 @@
 package com.fincatto.documentofiscal.validadores;
 
+import com.fincatto.documentofiscal.nfe400.classes.NFNotaInfoItemModalidadeBCICMSST;
+import com.fincatto.documentofiscal.nfe400.classes.nota.NFNotaInfoItemImpostoICMS;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -159,7 +165,7 @@ public abstract class StringValidador {
 
     public static void placaDeVeiculo(final String placaVeiculo) {
         if (placaVeiculo != null) {
-            final Matcher matcher = Pattern.compile("^([A-Z]{2,3}[0-9]{4}|[A-Z]{3,4}[0-9]{3})$").matcher(placaVeiculo);
+            final Matcher matcher = Pattern.compile("^([A-Z]{2,3}[0-9]{4}|[A-Z]{3,4}[0-9]{3}|[A-Z]{3}[0-9][A-Z][0-9]{2})$").matcher(placaVeiculo);
             if (!matcher.find()) {
                 throw new IllegalStateException(String.format("Placa de veiculo nao esta no padrao (%s)", placaVeiculo));
             }
@@ -168,7 +174,7 @@ public abstract class StringValidador {
 
     public static void placaDeVeiculo(final String placaVeiculo, final String info) {
         if (placaVeiculo != null) {
-            final Matcher matcher = Pattern.compile("^([A-Z]{2,3}[0-9]{4}|[A-Z]{3,4}[0-9]{3})$").matcher(placaVeiculo);
+            final Matcher matcher = Pattern.compile("^([A-Z]{2,3}[0-9]{4}|[A-Z]{3,4}[0-9]{3}|[A-Z]{3}[0-9][A-Z][0-9]{2})$").matcher(placaVeiculo);
             if (!matcher.find()) {
                 throw new IllegalStateException(String.format("%s nao esta no padrao (%s)", info, placaVeiculo));
             }
@@ -437,6 +443,12 @@ public abstract class StringValidador {
         }
     }
 
+    public static void tamanho4a60(final String string, final String info) {
+        if (string != null) {
+            StringValidador.intervalo(string, 4, 60, info);
+        }
+    }
+
     public static void tamanho2a4(final String string, final String info) {
         if (string != null) {
             StringValidador.intervalo(string, 2, 4, info);
@@ -578,21 +590,21 @@ public abstract class StringValidador {
     }
 
     /**
-     * Método para validação de Strings.
+     * Metodo para validacao de Strings.
      *
      * @param paraValidar String a ser validada
-     * @param info Informação de retorno caso haja erro.
-     * @param tamanho tamanho para validação da {@code String} , pode ser {@code null} :
-     * @param exatamente
-     *
-     * <pre>
+     * @param info Informacao de retorno caso haja erro.
+     * @param tamanho tamanho para validacao da {@code String} , pode ser
+     * {@code null} :
+     * @param exatamente <pre>
      * se false {@code null} a {@code String}
-     *                   não precisa ter o tamanho exato do parametro anterior.
+     *                   nao precisa ter o tamanho exato do parametro anterior.
      * </pre>
      *
-     * @param numerico se true {@code null} a {@code String} precisa ser numérica[0-9].
-     * @return retorna a própria {@code String} {
+     * @param numerico se true {@code null} a {@code String} precisa ser
+     * numerica[0-9].
      * @param paraValidar}.
+     * @return retorna a propria {@code String} {
      */
     public static String validador(final String paraValidar, final String info, Integer tamanho, Boolean exatamente, Boolean numerico) {
         tamanho = ObjectUtils.defaultIfNull(tamanho, 1);
@@ -649,7 +661,7 @@ public abstract class StringValidador {
         }
     }
 
-    private static void validaTamanhoMaximo(final String string, final int tamanho, final String info) {
+    public static void validaTamanhoMaximo(final String string, final int tamanho, final String info) {
         if (string != null && (string.length() < 1 || string.length() > tamanho)) {
             throw new IllegalStateException(String.format("%s \"%s\" deve possuir entre 1-%s caracteres", info, string, tamanho));
         }
@@ -683,19 +695,20 @@ public abstract class StringValidador {
     }
 
     /**
-     * Valida um número com N {
+     * Valida um numero com N {
      *
      * <pre>
      *  StringValidador.capacidadeNDigitos("10000", "info" , 5)   = "10000"
      *  StringValidador.capacidadeNDigitos("5", "info" , 2)   = "5"
      * </pre>
      *
-     * @throws IllegalStateException se<br>
-     * {@code capacidade = "10000" } & {@code digitos = 3}, ou seja , {@code capacidade.length()-1 > digitos }
      * @param capacidade
      * @param info
      * @param digitos
      * @return
+     * @throws IllegalStateException se<br>
+     * {@code capacidade = "10000" } & {@code digitos = 3}, ou seja , {@code capacidade.length()-1 > digitos
+     * }
      */
     public static String capacidadeNDigitos(final String capacidade, final String info, final int digitos) {
         if (capacidade != null) {
@@ -754,8 +767,63 @@ public abstract class StringValidador {
 
     public static void equals(final String test, final String tested) {
         if (!StringUtils.equals(test, tested)) {
-            throw new IllegalStateException(String.format("Valor('%s') não corresponde com o padrao('%s')", (Object[]) new String[]{tested, test}));
+            throw new IllegalStateException(String.format("Valor('%s') nao corresponde com o padrao('%s')", tested, test));
         }
     }
 
+    public static void isBase64(final String string, final String info) {
+        if (!Base64.isArrayByteBase64(string.getBytes())) {
+            throw new IllegalStateException(String.format("A string %s com o valor = '%s' precisa ser codificada em Base64. ", info, string));
+        }
+    }
+
+    /**
+     * Validacao conforme nota tecnica 2019.001 Versao 1.00 – Abril de 2019
+     */
+    public static void validaCodigoRandomico(final String string, final String info) {
+        String[] codigosInvalidos = new String[]{"00000000", "11111111", "22222222", "33333333", "44444444", "55555555", "66666666", "77777777", "88888888", "99999999", "12345678", "23456789", "34567890", "45678901", "56789012", "67890123", "78901234", "89012345", "90123456", "01234567"};
+        if (StringUtils.containsAny(string, codigosInvalidos)) {
+            throw new IllegalStateException(String.format("%s \"%s\" inválido", info, string));
+        }
+    }
+
+    /**
+     * Metodo para regra de validacao N18-10 e N18-20, da nota tecnica :
+     * 2019.001 Versao 1.00 – Abril de 2019 Utilizasse Java reflection para
+     * acessar os metodos necessarios.
+     */
+    //este metodo esta muito ruim, nao faz nada e ainda estoura um stack trace que nao pode ser capturado!
+    //(pq está ruim?, ele faz a validacao da nota tecnica 2019.001 Versao 1.00 descrita no comentario do metodo)
+    public static void validaPreenchimentoDeMargemValorAgregado(NFNotaInfoItemImpostoICMS impostoICMS) throws InvocationTargetException, IllegalAccessException {
+        if (impostoICMS != null) {
+            //seleciona todos os metodos da classe de ICMS
+            for (Method method : impostoICMS.getClass().getMethods()) {
+                final Class<?> returnType = method.getReturnType();
+                Method[] typeMethods = returnType.getMethods();
+                //verifica se a classe de ICMS tem o item NFNotaInfoItemModalidadeBCICMSST.
+                final boolean present = Arrays.stream(typeMethods).anyMatch(method1 -> method1.getReturnType().equals(NFNotaInfoItemModalidadeBCICMSST.class));
+                if (present) {
+                    //invoca o metodo para verificar qual classe de ICMS esta preenchida(objectValue!=null)
+                    Object objectValue = method.invoke(impostoICMS);
+                    if (objectValue != null) {
+                        // retorna o metodo necessario para extrair o valor de ModalidadeMVA.
+                        Method modalidadeMethod = Arrays.stream(typeMethods).filter(method1 -> method1.getReturnType().equals(NFNotaInfoItemModalidadeBCICMSST.class)).findAny().get();
+                        NFNotaInfoItemModalidadeBCICMSST modalidadeBCICMSST = (NFNotaInfoItemModalidadeBCICMSST) modalidadeMethod.invoke(objectValue, new Object[]{});
+                        // retorna o metodo necessario para extrair o valor da percentualMargemValorAdicionadoICMSST(pMVAST).
+                        Method percentualMethod = Arrays.stream(typeMethods).filter(method1 -> method1.getName().contains("getPercentualMargemValorAdicionadoICMSST")).findAny().orElse(null);
+                        String percentualValue = null;
+                        if (percentualMethod != null) {
+                            percentualValue = (String) percentualMethod.invoke(objectValue, new Object[]{});
+                        }
+                        //verificacoes conforme a regra de validacao
+                        if (modalidadeBCICMSST != null && modalidadeBCICMSST.equals(NFNotaInfoItemModalidadeBCICMSST.MARGEM_VALOR_AGREGADO) && StringUtils.isBlank(percentualValue)) {
+                            throw new IllegalStateException("Informada modalidade de determinacao da BC da ST como MVA(modBCST=4)" + " e nao informado o campo pMVAST!");
+                        } else if (StringUtils.isNotBlank(percentualValue) && (modalidadeBCICMSST == null || !modalidadeBCICMSST.equals(NFNotaInfoItemModalidadeBCICMSST.MARGEM_VALOR_AGREGADO))) {
+                            throw new IllegalStateException(String.format("Informada modalidade de determinacao da BC da ST diferente de MVA(informado[%s]) e informado o campo pMVAST", (modalidadeBCICMSST != null ? modalidadeBCICMSST.toString() : "modBCST<>4")));
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

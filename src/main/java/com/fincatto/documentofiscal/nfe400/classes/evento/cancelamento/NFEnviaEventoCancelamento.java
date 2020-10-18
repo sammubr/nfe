@@ -1,7 +1,7 @@
 package com.fincatto.documentofiscal.nfe400.classes.evento.cancelamento;
 
 import com.fincatto.documentofiscal.DFBase;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.ListValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
 import org.simpleframework.xml.*;
@@ -13,18 +13,18 @@ import java.util.List;
 @Namespace(reference = "http://www.portalfiscal.inf.br/nfe")
 public class NFEnviaEventoCancelamento extends DFBase {
     private static final long serialVersionUID = 2370103749912669480L;
-
-    @Attribute(name = "versao", required = true)
+    
+    @Attribute(name = "versao")
     private String versao;
-
-    @Element(name = "idLote", required = true)
+    
+    @Element(name = "idLote")
     private String idLote;
-
-    @ElementList(entry = "evento", inline = true, required = true)
+    
+    @ElementList(entry = "evento", inline = true)
     private List<NFEventoCancelamento> evento;
 
     public void setVersao(final BigDecimal versao) {
-        this.versao = BigDecimalParser.tamanho5Com2CasasDecimais(versao, "Versao");
+        this.versao = BigDecimalValidador.tamanho5Com2CasasDecimais(versao, "Versao");
     }
 
     public String getVersao() {

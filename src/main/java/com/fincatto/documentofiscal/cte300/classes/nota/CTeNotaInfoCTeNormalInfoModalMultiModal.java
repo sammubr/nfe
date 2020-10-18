@@ -16,11 +16,11 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoModalMultiModal extends DFBase {
     private static final long serialVersionUID = 2648942154476837763L;
-
-    @Element(name = "COTM", required = true)
+    
+    @Element(name = "COTM")
     private String numeroCertificado;
-
-    @Element(name = "indNegociavel", required = true)
+    
+    @Element(name = "indNegociavel")
     private CTIndicadoNegociavel indicadorNegociavel;
 
     @Element(name = "seg", required = false)

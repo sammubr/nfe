@@ -6,11 +6,11 @@ import org.simpleframework.xml.Element;
 
 public class NFInfoConsultaCadastro extends DFBase {
     private static final long serialVersionUID = 2846137738770858117L;
-
-    @Element(name = "xServ", required = true)
+    
+    @Element(name = "xServ")
     private String servico;
-
-    @Element(name = "UF", required = true)
+    
+    @Element(name = "UF")
     private String uf;
 
     @Element(name = "IE", required = false)

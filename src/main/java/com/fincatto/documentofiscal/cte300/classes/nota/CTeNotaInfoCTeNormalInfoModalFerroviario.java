@@ -15,8 +15,8 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoModalFerroviario extends DFBase {
     private static final long serialVersionUID = -2131736178907343884L;
-
-    @Element(name = "tpTraf", required = true)
+    
+    @Element(name = "tpTraf")
     private CTTipoTrafego tipoTrafego;
 
     @Element(name = "trafMut", required = false)

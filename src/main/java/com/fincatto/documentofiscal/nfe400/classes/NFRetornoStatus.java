@@ -21,12 +21,14 @@ public enum NFRetornoStatus {
     CODIGO_113(113, "SCAN ser\u00e1 desabilitado para a UF \u00e0s hh:mm"),
     CODIGO_114(114, "SCAN desabilitado pela SEFAZ Origem"),
     CODIGO_128(128, "Lote de Evento Processado"),
+    CODIGO_124(124, "EPEC Autorizado"),
     CODIGO_135(135, "Evento registrado e vinculado a NF-e"),
     CODIGO_136(136, "Evento registrado, mas n\u00e3o vinculado a NF-e"),
     CODIGO_137(137, "Nenhum documento localizado para o Destinat\u00e1rio"),
     CODIGO_138(138, "Documento localizado para o Destinat\u00e1rio"),
     CODIGO_139(139, "Pedido de Download processado"),
     CODIGO_140(140, "Download disponibilizado"),
+    CODIGO_142(142, "Ambiente de Conting\u00eancia EPEC bloqueado para o Emitente"),
     CODIGO_150(150, "Autorizado o uso da NF-e"),
     CODIGO_151(151, "Cancelamento de NF-e homologado fora de prazo"),
     CODIGO_155(155, "Cancelamento de NF-e homologado fora de prazo"),
@@ -130,6 +132,8 @@ public enum NFRetornoStatus {
     CODIGO_302(302, "Uso Denegado : Irregularidade fiscal do destinat\u00e1rio"),
     CODIGO_303(303, "Uso Denegado : Destinat\u00e1rio n\u00e3o habilitado a operar na UF"),
     CODIGO_304(304, "Rejei\u00e7\u00e3o: Pedido de Cancelamento para NF-e com evento da Suframa"),
+    CODIGO_305(305, "Rejei\u00E7\u00E3o: Destinat\u00E1rio bloqueado na UF"),
+    CODIGO_306(306, "Rejei\u00E7\u00E3o: IE do destinat\u00E1rio n\u00E3o est\u00E1 ativa na UF"),
     CODIGO_316(316, "Rejei\u00e7\u00e3o: Nota Fiscal referenciada com a mesma Chave de Acesso da Nota Fiscal atual"),
     CODIGO_317(317, "Rejei\u00e7\u00e3o: NF modelo 1 referenciada com data de emiss\u00e3o inv\u00e1lida"),
     CODIGO_318(318, "Rejei\u00e7\u00e3o: Contranota de Produtor sem Nota Fiscal referenciada"),
@@ -208,6 +212,8 @@ public enum NFRetornoStatus {
     CODIGO_463(463, "Rejei\u00e7\u00e3o: C\u00f3digo identificador do CSC no QR-Code foi revogado pela empresa"),
     CODIGO_464(464, "Rejei\u00e7\u00e3o: C\u00f3digo de Hash no QR-Code difere do calculado"),
     CODIGO_465(465, "Rejei\u00e7\u00e3o: N\u00famero de controle da FCI inexistente"),
+    CODIGO_467(467, "Rejei\u00e7\u00e3o: Dados da NF-e divergentes do EPEC"),
+    CODIGO_468(468, "Rejei\u00e7\u00e3o: NF-e com Tipo Emiss\u00e3o = 4, sem EPEC correspondente"),
     CODIGO_478(478, "Rejei\u00e7\u00e3o: Local da entrega n\u00e3o informado para faturamto direto de ve\u00edculos novos"),
     CODIGO_479(479, "Rejei\u00e7\u00e3o: Emissor em situa\u00e7\u00e3o irregular peranto o fisco"),
     CODIGO_480(480, "Rejei\u00e7\u00e3o: CNPJ da Chave de acesso da NF-e informada diverge do CNPJ do emitente"),
@@ -215,7 +221,7 @@ public enum NFRetornoStatus {
     CODIGO_482(482, "Rejei\u00e7\u00e3o: AA da Chave de acesso inv\u00e1lida"),
     CODIGO_483(483, "Rejei\u00e7\u00e3o: MM da Chave de acesso inv\u00e1lido"),
     CODIGO_484(484, "Rejei\u00e7\u00e3o: DPEC com tipo de emiss\u00e3o diferente de \"4\"(posi\u00e7\u00e3o 35 da Chave de Acess"),
-    CODIGO_485(485, "Rejei\u00e7\u00e3o: N\u00famero DPEC j\u00e1 existe no cadastro de DPEC"),
+    CODIGO_485(485, "Rejei\u00e7\u00e3o: Duplicidade de numera\u00e7\u00e3o do EPEC (Modelo, CNPJ, S\u00e9rie e N\u00famero)"),
     CODIGO_486(486, "Rejei\u00e7\u00e3o: DPEC n\u00e3o localizada para o n\u00famero de registro de DPEC informado"),
     CODIGO_487(487, "Rejei\u00e7\u00e3o: Nenhuma DPEC localizada para a chave de acesso informada"),
     CODIGO_488(488, "Rejei\u00e7\u00e3o: Requisitante de Consulta n\u00e3o tem o mesmo CNPJ base do emissor da DPEC"),
@@ -363,8 +369,8 @@ public enum NFRetornoStatus {
     CODIGO_657(657, "Rejei\u00e7\u00e3o: C\u00f3digo do \u00d3rg\u00e3o diverge do \u00f3rg\u00e3o autorizador"),
     CODIGO_658(658, "Rejei\u00e7\u00e3o: UF do destinat\u00e1rio da Chave de Acesso diverge da UF autorizadora"),
     CODIGO_660(660, "Rejei\u00e7\u00e3o: CFOP de Combust\u00edvel e n\u00e3o informado grupo de combust\u00edvel da NF-e"),
-    CODIGO_661(661, "Rejei\u00e7\u00e3o: NF-e j\u00e1 existente para o n\u00famero da DPEC informada"),
-    CODIGO_662(662, "Rejei\u00e7\u00e3o: Numera\u00e7\u00e3o da DPEC est\u00e1 inutilizada na Base de Dados da SEFAZ"),
+    CODIGO_661(661, "Rejei\u00e7\u00e3o: NF-e j\u00e1 existente para o n\u00famero do EPEC informado"),
+    CODIGO_662(662, "Rejei\u00e7\u00e3o: Numera\u00e7\u00e3o do EPEC est\u00e1 inutilizada na Base de Dados da SEFAZ"),
     CODIGO_663(663, "Rejei\u00e7\u00e3o: Al\u00edq. ICMS maior que 4% na sa\u00edda interestadual com produtos importados"),
     CODIGO_678(678, "Rejei\u00e7\u00e3o: NF referenciada com UF diferente da UF da NF-e complementar"),
     CODIGO_679(679, "Rejei\u00e7\u00e3o: Modelo da NF-e referenciada diferente de 55"),
@@ -379,7 +385,7 @@ public enum NFRetornoStatus {
     CODIGO_688(688, "Rejei\u00e7\u00e3o: NF referenciada de produtor com IE inexistente (nREF: xxx)"),
     CODIGO_689(689, "Rejei\u00e7\u00e3o: NF referenciada de produtor com IE n\u00e3o vinculada ao CNPJ/CPF informado (nREF: xxx)"),
     CODIGO_690(690, "Rejei\u00e7\u00e3o: Pedido de cancelamento para NF-e com CT-e ou MDF-e"),
-    CODIGO_691(691, "Rejei\u00e7\u00e3o: Chave de Acesso da NFe diverge da Chave de Acesso do EPEC"),
+    CODIGO_691(691, "Rejei\u00e7\u00e3o: Chave de Acesso da NF-e diverge da Chave de Acesso do EPEC"),
     CODIGO_692(692, "Rejei\u00e7\u00e3o: Existe EPEC registrado para esta S\u00e9rie e N\u00famero"),
     CODIGO_693(693, "Rejei\u00e7\u00e3o: Al\u00edquota de ICMS superior a definida para a opera\u00e7\u00e3o interestadual"),
     CODIGO_694(694, "Rejei\u00e7\u00e3o: N\u00e3o informado o grupo de ICMS para a UF de destino"),
@@ -450,6 +456,7 @@ public enum NFRetornoStatus {
     CODIGO_763(763, "Rejei\u00e7\u00e3o: NFC-e com dados de aquisi\u00e7\u00e3od e cana"),
     CODIGO_765(765, "Rejei\u00e7\u00e3o: Lote s\u00f3 poder\u00e1 conter NF-e ou NFC-e"),
     CODIGO_766(766, "Rejei\u00e7\u00e3o: NFC-e com CST 50-suspen\u00e7\u00e3o"),
+    CODIGO_770(770, "Rejei\u00e7\u00e3o: CFOP Inexistente"),
     CODIGO_771(771, "Rejei\u00e7\u00e3o: Opera\u00e7\u00e3o interestadual e UF de destino com EX"),
     CODIGO_772(772, "Rejei\u00e7\u00e3o: Opera\u00e7\u00e3o interestadual e UF de destino igual \u00e0 UF do emitente"),
     CODIGO_773(773, "Rejei\u00e7\u00e3o: Opera\u00e7\u00e3o interna e UF de destino difere da UF do emitente"),
@@ -514,6 +521,7 @@ public enum NFRetornoStatus {
     CODIGO_881(881, "Rejei\u00E7\u00E3o: Percentual de FCP ST igual a zero [nItem: nnn]"),
     CODIGO_882(882, "Rejei\u00E7\u00E3o: GTIN (cEAN) com prefixo inv\u00e1lido [nItem: nnn]"),
     CODIGO_883(883, "Rejei\u00E7\u00E3o: GTIN (cEAN) sem informa\u00e7\u00e3o [nItem: nnn]"),
+    CODIGO_897(897, "Rejei\u00E7\u00E3o 897: C\u00F3digo num\u00E9rico em form\u00E1to inv\u00E1lido."),
     CODIGO_898(898, "Rejei\u00E7\u00E3o: Data de vencimento da parcela n\u00E3o informada ou menor que Data de Autoriza\u00E7\u00E3o [nOcor:999]"),
     CODIGO_899(899, "Rejei\u00E7\u00E3o: Informado incorretamente o campo meio de pagamento"),
     CODIGO_900(900, "Rejei\u00E7\u00E3o: Data de vencimento da parcela n\u00E3o informada ou menor que Data de Emiss\u00E3o [nOcor:999]"),
@@ -521,11 +529,36 @@ public enum NFRetornoStatus {
     CODIGO_902(902, "Rejei\u00E7\u00E3o: Valor Liquido da Fatura difere do Valor Original menos o Valor do Desconto"),
     CODIGO_903(903, "Rejei\u00E7\u00E3o: Vers\u00E3o informada no QR-Code (100) n\u00E3o \u00e9 mais v\u00E1lida para a data de emiss\u00E3o"),
     CODIGO_904(904, "Rejei\u00E7\u00E3o: Informado indevidamente campo valor de pagamento"),
+    CODIGO_906(906, "Rejei\u00E7\u00E3o: N\u00E3o informados os campos para informa\u00E7\u00F5es do ICMS Efetivo. [nItem: nnn]"),
     CODIGO_905(905, "Rejei\u00E7\u00E3o: Campos do grupo Fatura n\u00E3o informados"),
-    CODIGO_906(906, "Rejei\u00E7\u00E3o: N\u00E3o informado campo obrigat\u00F3rio quando CST = 60 ou CSOSN=500 e opera\u00E7\u00E3o com consumidor final"),
     CODIGO_907(907, "Rejei\u00E7\u00E3o: N\u00E3o informado campo obrigat\u00F3rio quando CST = 60 ou CSOSN=500 e opera\u00E7\u00E3o com consumidor final"),
     CODIGO_908(908, "Rejei\u00E7\u00E3o: N\u00E3o informado campo obrigat\u00F3rio quando CST = 60 ou CSOSN=500 e opera\u00E7\u00E3o com consumidor final"),
     CODIGO_909(909, "Rejei\u00E7\u00E3o: N\u00E3o informado campo obrigat\u00F3rio quando CST = 60 ou CSOSN=500 e opera\u00E7\u00E3o com consumidor final"),
+    CODIGO_922(922, "Rejei\u00E7\u00E3o: Contranota de Produtor s\u00F3 pode referenciar NF-e ou NF de Produtor Modelo 4"),
+    CODIGO_923(923, "Rejei\u00E7\u00E3o: Referenciado documento de opera\u00E7\u00E3o interna em opera\u00E7\u00E3o interestadual ou com o exterior"),
+    CODIGO_924(924, "Rejei\u00E7\u00E3o: Informado Cupom Fiscal referenciado."),
+    CODIGO_925(925, "Rejei\u00E7\u00E3o: NF-e com identifica\u00E7\u00E3o de estrangeiro e inscri\u00E7\u00E3o estadual informada para destinat\u00E1rio"),
+    CODIGO_926(926, "Rejei\u00E7\u00E3o: Opera\u00E7\u00E3o com Exterior e pa\u00EDs de destino igual a Brasil."),
+    CODIGO_927(927, "Rejei\u00E7\u00E3o: N\u00FAmero do item fora da ordem sequencial."),
+    CODIGO_928(928, "Rejei\u00E7\u00E3o: Informado c\u00F3digo de benef\u00EDcio fiscal para CST sem benef\u00EDcio fiscal [nItem: nnn]"),
+    CODIGO_929(929, "Rejei\u00E7\u00E3o: Informado CST de diferimento sem as informa\u00E7\u00F5es de diferimento [nItem: nnn]"),
+    CODIGO_930(930, "Rejei\u00E7\u00E3o: CST com benef\u00EDcio fiscal e n\u00E3o informado o c\u00F3digo de benef\u00EDcio fiscal [nItem: nnn]"),
+    CODIGO_931(931, "Rejei\u00E7\u00E3o: CST n\u00E3o corresponde ao tipo de c\u00F3digo de benef\u00EDcio fiscal [nItem: nnn]"),
+    CODIGO_932(932, "Rejei\u00E7\u00E3o: Informada modalidade de determina\u00E7\u00E3o da BC da ST como MVA e n\u00E3o informado o campo pMVAST [nItem: nnn]"),
+    CODIGO_933(933, "Rejei\u00E7\u00E3o: Informada modalidade de determina\u00E7\u00E3o da BC da ST diferente de MVA e informado o campo pMVAST [nItem: nnn]"),
+    CODIGO_934(934, "Rejei\u00E7\u00E3o: N\u00E3o informado valor do ICMS desonerado ou o Motivo de desonera\u00E7\u00E3o [nItem: nnn]"),
+    CODIGO_935(935, "Rejei\u00E7\u00E3o: Valor total da Base de C\u00E1lculo superior ao valor limite estabelecido [Valor Limite: R$ XXX.XXX,XX] (valor definido pela UF)"),
+    CODIGO_936(936, "Rejei\u00E7\u00E3o: Raz\u00E3o Social do emitente diverge do informado no cadastro da SEFAZ"),
+    CODIGO_938(938, "Rejei\u00E7\u00E3o: N\u00E3o informada vBCSTRet, pST, vICMSSubstituto e vICMSSTRet [nItem:999]"),
+    CODIGO_970(970, "Rejei\u00E7\u00E3o: C\u00F3digo de Pa\u00EDs inexistente [local de retirada/entrega]"),
+    CODIGO_971(971, "Rejei\u00E7\u00E3o: IE inv\u00E1lida [local de retirada/entrega]"),
+    CODIGO_972(972, "Rejei\u00E7\u00E3o: Obrigat\u00F3ria as informa\u00E7\u00F5es do respons\u00E1vel t\u00E9cnico"),
+    CODIGO_973(973, "Rejei\u00E7\u00E3o: CNPJ do respons\u00E1vel t\u00E9cnico inv\u00E1lido"),
+    CODIGO_974(974, "Rejei\u00E7\u00E3o: CNPJ do respons\u00E1vel t\u00E9cnico diverge do cadastrado"),
+    CODIGO_975(975, "Rejei\u00E7\u00E3o: Obrigat\u00F3ria a informa\u00E7\u00E3o do identificador do CSRT e do Hash do CSRT"),
+    CODIGO_976(976, "Rejei\u00E7\u00E3o: Identificador do CSRT n\u00E3o cadastrado na SEFAZ"),
+    CODIGO_977(977, "Rejei\u00E7\u00E3o: Identificador do CSRT revogado"),
+    CODIGO_978(978, "Rejei\u00E7\u00E3o: Hash do CSRT diverge do calculado"),
     CODIGO_999(999, "Rejei\u00e7\u00e3o: Erro n\u00e3o catalogado"),
     CODIGO_9302(9302, "CNPJ Inv\u00e1lido (Zeros, nulo, DV)");
 
@@ -550,7 +583,7 @@ public enum NFRetornoStatus {
                 return statusRetorno;
             }
         }
-        throw new IllegalArgumentException(String.format("Status retorno %s n\u00e3o mapeado", codigo));
+        return null;
     }
 
     public boolean isAutorizado() {
@@ -562,11 +595,17 @@ public enum NFRetornoStatus {
     }
 
     public boolean isRejeitado() {
-        return (this.codigo > 200) && !NFRetornoStatus.AUTORIZADOS.contains(this) && !NFRetornoStatus.DENEGADOS.contains(this) && !this.isDuplicado();
+        final boolean naoAutorizado = !NFRetornoStatus.AUTORIZADOS.contains(this);
+        final boolean naoDenegado = !NFRetornoStatus.DENEGADOS.contains(this);
+        return (this.codigo > 200) && naoAutorizado && naoDenegado && !this.isDuplicado() && !this.isJaInutilizado();
     }
 
     public boolean isDuplicado() {
         return CODIGO_539.getCodigo() == this.codigo;
+    }
+
+    public boolean isJaInutilizado() {
+        return CODIGO_206.getCodigo() == this.codigo;
     }
 
     public int getCodigo() {

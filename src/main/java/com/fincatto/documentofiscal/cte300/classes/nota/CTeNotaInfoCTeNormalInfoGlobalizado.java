@@ -15,8 +15,8 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoGlobalizado extends DFBase {
     private static final long serialVersionUID = -2117514135660749569L;
-
-    @Element(name = "xObs", required = true)
+    
+    @Element(name = "xObs")
     private String Observacao;
 
     public CTeNotaInfoCTeNormalInfoGlobalizado() {

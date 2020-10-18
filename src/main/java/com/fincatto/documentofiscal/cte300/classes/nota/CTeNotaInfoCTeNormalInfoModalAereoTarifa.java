@@ -2,11 +2,13 @@ package com.fincatto.documentofiscal.cte300.classes.nota;
 
 import com.fincatto.documentofiscal.DFBase;
 import com.fincatto.documentofiscal.cte300.classes.CTClasseTarifa;
-import com.fincatto.documentofiscal.validadores.BigDecimalParser;
+import com.fincatto.documentofiscal.validadores.BigDecimalValidador;
 import com.fincatto.documentofiscal.validadores.StringValidador;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
+
+import java.math.BigDecimal;
 
 import java.math.BigDecimal;
 
@@ -19,14 +21,14 @@ import java.math.BigDecimal;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoModalAereoTarifa extends DFBase {
     private static final long serialVersionUID = 4117608894098820892L;
-
-    @Element(name = "CL", required = true)
+    
+    @Element(name = "CL")
     private CTClasseTarifa classe;
 
     @Element(name = "cTar", required = false)
     private String codigo;
-
-    @Element(name = "vTar", required = true)
+    
+    @Element(name = "vTar")
     private String valor;
 
     public CTeNotaInfoCTeNormalInfoModalAereoTarifa() {
@@ -71,6 +73,6 @@ public class CTeNotaInfoCTeNormalInfoModalAereoTarifa extends DFBase {
      * Valor da tarifa por kg quando for o caso.
      */
     public void setValor(final BigDecimal valor) {
-        this.valor = BigDecimalParser.tamanho15Com2CasasDecimais(valor, "Valor da Tarifa");
+        this.valor = BigDecimalValidador.tamanho15Com2CasasDecimais(valor, "Valor da Tarifa");
     }
 }

@@ -16,8 +16,8 @@ import java.util.List;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoServicoVinculado extends DFBase {
     private static final long serialVersionUID = -2130925317280973601L;
-
-    @ElementList(name = "infCTeMultimodal", inline = true, required = true)
+    
+    @ElementList(name = "infCTeMultimodal", inline = true)
     private List<CTeNotaInfoCTeNormalInfoServicoVinculadoInfoCTeMultiModal> infoCTeMultiModal;
 
     public CTeNotaInfoCTeNormalInfoServicoVinculado() {

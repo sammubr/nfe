@@ -15,8 +15,8 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoInformacoesRelativasImpostosICMS45 extends DFBase {
     private static final long serialVersionUID = 7637372648460225698L;
-
-    @Element(name = "CST", required = true)
+    
+    @Element(name = "CST")
     private CTCodigoSituacaoTributariaICMS codigoSituacaoTributaria;
 
     public CTeNotaInfoInformacoesRelativasImpostosICMS45() {

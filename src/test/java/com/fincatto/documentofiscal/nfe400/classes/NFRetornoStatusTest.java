@@ -15,9 +15,9 @@ public class NFRetornoStatusTest {
         Assert.assertEquals(NFRetornoStatus.CODIGO_100, NFRetornoStatus.valueOfCodigo(100));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void valueOfCodigoNaoMapeadoTest() {
-        NFRetornoStatus.valueOfCodigo(666);
+        Assert.assertNull(NFRetornoStatus.valueOfCodigo(666));
     }
 
     @Test
@@ -39,11 +39,18 @@ public class NFRetornoStatusTest {
     public void isRejeitadoTest() {
         Assert.assertTrue(NFRetornoStatus.CODIGO_230.isRejeitado());
         Assert.assertFalse(NFRetornoStatus.CODIGO_100.isRejeitado());
+        Assert.assertFalse(NFRetornoStatus.CODIGO_206.isRejeitado());
     }
 
     @Test
     public void isDuplicadoTest() {
         Assert.assertTrue(NFRetornoStatus.CODIGO_539.isDuplicado());
         Assert.assertFalse(NFRetornoStatus.CODIGO_100.isDuplicado());
+    }
+
+    @Test
+    public void isJaInutilizadoTest() {
+        Assert.assertTrue(NFRetornoStatus.CODIGO_206.isJaInutilizado());
+        Assert.assertFalse(NFRetornoStatus.CODIGO_100.isJaInutilizado());
     }
 }

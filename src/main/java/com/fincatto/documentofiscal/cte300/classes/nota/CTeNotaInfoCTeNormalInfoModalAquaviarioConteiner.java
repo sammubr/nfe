@@ -19,8 +19,8 @@ import java.util.List;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoModalAquaviarioConteiner extends DFBase {
     private static final long serialVersionUID = -6316603016118768000L;
-
-    @Element(name = "nCont", required = true)
+    
+    @Element(name = "nCont")
     private String identificacao;
 
     @ElementList(name = "lacre", inline = true, required = false)

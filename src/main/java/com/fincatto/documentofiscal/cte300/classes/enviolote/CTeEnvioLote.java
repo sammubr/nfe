@@ -17,14 +17,14 @@ import java.util.List;
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeEnvioLote extends DFBase {
     private static final long serialVersionUID = -6451397314955370262L;
-
-    @Attribute(name = "versao", required = true)
+    
+    @Attribute(name = "versao")
     private String versao;
-
-    @Element(name = "idLote", required = true)
+    
+    @Element(name = "idLote")
     private String idLote;
-
-    @ElementList(name = "CTe", inline = true, required = true)
+    
+    @ElementList(name = "CTe", inline = true)
     private List<CTeNota> nota;
 
     public CTeEnvioLote() {

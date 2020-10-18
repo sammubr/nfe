@@ -1,11 +1,11 @@
 package com.fincatto.documentofiscal.mdfe3.classes.nota;
 
+import com.fincatto.documentofiscal.DFBase;
+import com.fincatto.documentofiscal.validadores.StringValidador;
+import org.apache.commons.lang3.StringUtils;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
-
-import com.fincatto.documentofiscal.DFBase;
-import com.fincatto.documentofiscal.validadores.StringValidador;
 
 /**
  * Created by Eldevan Nery Junior on 03/11/17.
@@ -17,20 +17,23 @@ public class MDFInfoEmitente extends DFBase {
     private static final long serialVersionUID = 6209368588212530094L;
 
     private static final String INFO = "Emitente do Manifesto";
-
-    @Element(name = "CNPJ", required = true)
+    
+    @Element(name = "CNPJ", required = false)
     private String cnpj;
 
-    @Element(name = "IE", required = true)
+    @Element(name = "CPF", required = false)
+    private String cpf;
+    
+    @Element(name = "IE")
     private String inscricaoEstadual;
-
-    @Element(name = "xNome", required = true)
+    
+    @Element(name = "xNome")
     private String razaoSocial;
 
     @Element(name = "xFant", required = false)
     private String nomeFantasia;
-
-    @Element(name = "enderEmit", required = true)
+    
+    @Element(name = "enderEmit")
     private MDFInfoEmitenteEndereco endereco;
 
     public String getCnpj() {
@@ -42,7 +45,35 @@ public class MDFInfoEmitente extends DFBase {
      * Informar zeros não significativos
      */
     public void setCnpj(final String cnpj) {
-        this.cnpj = StringValidador.cnpj(cnpj, MDFInfoEmitente.INFO);
+        if (this.cpf != null && cnpj != null) {
+            throw new IllegalStateException("Nao pode setar CNPJ caso CPF esteja setado");
+        }
+        StringValidador.cnpj(cnpj);
+        this.cnpj = cnpj;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(final String cpf) {
+        if (this.cnpj != null && cpf != null) {
+            throw new IllegalStateException("Nao pode setar CPF caso CNPJ esteja setado");
+        }
+        StringValidador.cpf(cpf);
+        this.cpf = cpf;
+    }
+
+    public String getCpfj() {
+
+        String cpfj = StringUtils.EMPTY;
+
+        if (StringUtils.isNotBlank(cpf)) {
+            cpfj = cpf;
+        } else if (StringUtils.isNotBlank(cnpj)) {
+            cpfj = cnpj;
+        }
+        return cpfj;
     }
 
     public String getInscricaoEstadual() {

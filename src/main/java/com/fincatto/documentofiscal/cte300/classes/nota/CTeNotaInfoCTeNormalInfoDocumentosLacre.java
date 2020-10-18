@@ -11,12 +11,12 @@ import org.simpleframework.xml.Root;
  * @info Lacres das Unidades de Carga
  */
 
-@Root(name = "nLacre")
+@Root(name = "lacUnidCarga")
 @Namespace(reference = "http://www.portalfiscal.inf.br/cte")
 public class CTeNotaInfoCTeNormalInfoDocumentosLacre extends DFBase {
     private static final long serialVersionUID = 4668372748009297086L;
-
-    @Element(name = "nLacre", required = true)
+    
+    @Element(name = "nLacre")
     private String numeroLacre;
 
     public CTeNotaInfoCTeNormalInfoDocumentosLacre() {
