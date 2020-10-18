@@ -1,6 +1,5 @@
 package com.fincatto.documentofiscal.nfe400.classes;
 
-import com.fincatto.documentofiscal.DFBase;
 import com.fincatto.documentofiscal.nfe400.classes.nota.assinatura.NFSignature;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
