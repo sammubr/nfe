@@ -6,8 +6,6 @@ import org.simpleframework.xml.Element;
 
 import java.math.BigDecimal;
 
-import java.math.BigDecimal;
-
 public class NFNotaInfoPagamento extends DFBase {
     private static final long serialVersionUID = -2613537583415054150L;
     

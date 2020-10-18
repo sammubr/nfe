@@ -6,8 +6,6 @@ import org.simpleframework.xml.Element;
 
 import java.math.BigDecimal;
 
-import java.math.BigDecimal;
-
 public class NFImpostoDevolvido extends DFBase {
     private static final long serialVersionUID = 3300133386344205418L;
     

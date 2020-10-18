@@ -6,8 +6,6 @@ import org.simpleframework.xml.Element;
 
 import java.math.BigDecimal;
 
-import java.math.BigDecimal;
-
 public class NFNotaInfoRetencoesTributos extends DFBase {
     private static final long serialVersionUID = 8153484835418045075L;
 

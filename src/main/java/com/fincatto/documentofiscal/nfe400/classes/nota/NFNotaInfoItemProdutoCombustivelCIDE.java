@@ -6,8 +6,6 @@ import org.simpleframework.xml.Element;
 
 import java.math.BigDecimal;
 
-import java.math.BigDecimal;
-
 public class NFNotaInfoItemProdutoCombustivelCIDE extends DFBase {
     private static final long serialVersionUID = -2869376510830652913L;
     

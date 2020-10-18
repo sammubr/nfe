@@ -6,8 +6,6 @@ import org.simpleframework.xml.Element;
 
 import java.math.BigDecimal;
 
-import java.math.BigDecimal;
-
 public class NFNotaInfoItemImpostoCOFINSST extends DFBase {
     private static final long serialVersionUID = -5116872172037197633L;
 
